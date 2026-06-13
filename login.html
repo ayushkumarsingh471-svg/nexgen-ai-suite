@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGen AI - Seller Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .bg-fk-blue { background-color: #2874f0; }
+        .text-fk-blue { color: #2874f0; }
+        .bg-fk-orange { background-color: #fb641b; }
+        .hover-fk-orange:hover { background-color: #f05a16; }
+    </style>
+</head>
+<body class="bg-fk-blue bg-gradient-to-br from-blue-900 to-[#2874f0] font-sans min-h-screen flex items-center justify-center p-6">
+
+    <div class="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-between gap-12">
+        
+        <div class="w-full lg:w-1/2 text-white">
+            
+            <h1 class="text-5xl font-black italic tracking-wider mb-2 flex items-center gap-2">
+                NEXGEN <span class="text-yellow-400 text-4xl"><i class="fa-solid fa-bolt"></i></span>
+            </h1>
+            <p class="text-white font-bold uppercase tracking-widest text-sm border-b-2 border-yellow-400 inline-block pb-1 mb-10">
+                Enterprise Seller Decision Suite
+            </p>
+
+            <div class="space-y-8">
+                
+                <div class="flex items-start gap-5">
+                    <div class="bg-white text-fk-blue h-14 w-14 rounded-full flex items-center justify-center text-2xl shrink-0 shadow-lg border-2 border-yellow-400">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-2xl text-yellow-400 mb-1 tracking-wide">Smart Stock Prediction</h3>
+                        <p class="text-white text-sm font-medium leading-relaxed">Uses XGBoost AI to map traffic & ad-spend, forecasting exact future stock to prevent capital locking.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-5">
+                    <div class="bg-white text-fk-blue h-14 w-14 rounded-full flex items-center justify-center text-2xl shrink-0 shadow-lg border-2 border-yellow-400">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-2xl text-yellow-400 mb-1 tracking-wide">Auto AQI Transit Radar</h3>
+                        <p class="text-white text-sm font-medium leading-relaxed">Pincode mapping automatically fetches live pollution index to predict unexpected logistics delays.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-5">
+                    <div class="bg-white text-fk-blue h-14 w-14 rounded-full flex items-center justify-center text-2xl shrink-0 shadow-lg border-2 border-yellow-400">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-2xl text-yellow-400 mb-1 tracking-wide">Autonomous Copilot Agent</h3>
+                        <p class="text-white text-sm font-medium leading-relaxed">An autonomous AI bot powered by NLP instantly handles grievances and generates customer resolutions.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-5">
+                    <div class="bg-white text-fk-blue h-14 w-14 rounded-full flex items-center justify-center text-2xl shrink-0 shadow-lg border-2 border-yellow-400">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-2xl text-yellow-400 mb-1 tracking-wide">Fake Review Security Shield</h3>
+                        <p class="text-white text-sm font-medium leading-relaxed">Scans semantic text using Tf-Idf Vectorization to eliminate malicious fake reviews and seller attacks.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-12 text-sm font-bold text-blue-200">
+                &copy; 2026 Boss Ayush Technologies.
+            </div>
+        </div>
+
+        <div class="w-full lg:w-[450px] bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden border-t-8 border-yellow-400">
+            
+            <div class="bg-gray-50 p-6 border-b border-gray-200 text-center">
+                <h2 class="text-2xl font-black text-gray-800">Welcome Back</h2>
+                <p class="text-sm font-bold text-gray-500 mt-1">Access your Seller Workspace</p>
+            </div>
+
+            <div class="p-8">
+                {% if error %}<div class="bg-red-100 border-l-4 border-red-600 text-red-700 px-4 py-3 rounded text-sm font-bold mb-6"><i class="fa-solid fa-circle-exclamation mr-1"></i> {{ error }}</div>{% endif %}
+                {% if message %}<div class="bg-green-100 border-l-4 border-green-600 text-green-700 px-4 py-3 rounded text-sm font-bold mb-6"><i class="fa-solid fa-circle-check mr-1"></i> {{ message }}</div>{% endif %}
+
+                <div class="flex bg-gray-100 rounded-lg p-1 mb-8">
+                    <button onclick="switchTab('login')" id="loginTabBtn" class="w-1/2 py-2 text-sm font-black bg-white shadow rounded-md text-fk-blue transition-all">LOG IN</button>
+                    <button onclick="switchTab('register')" id="registerTabBtn" class="w-1/2 py-2 text-sm font-bold text-gray-500 hover:text-gray-800 transition-all">REGISTER</button>
+                </div>
+
+                <div id="loginFormSection">
+                    <form method="POST" action="/login" class="space-y-5">
+                        <div>
+                            <label class="block text-xs font-black uppercase text-gray-700 mb-1">Username</label>
+                            <input type="text" name="username" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-fk-blue focus:bg-white text-sm font-bold transition-colors" placeholder="Enter admin" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase text-gray-700 mb-1">Password</label>
+                            <input type="password" name="password" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-fk-blue focus:bg-white text-sm font-bold transition-colors" placeholder="Enter boss123" required>
+                        </div>
+                        <button type="submit" class="w-full bg-fk-orange hover-fk-orange text-white font-black py-4 rounded-lg shadow-md transition-all uppercase text-sm mt-4">
+                            Login Securely <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div id="registerFormSection" class="hidden">
+                    <form method="POST" action="/register" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-black uppercase text-gray-700 mb-1">Store Name</label>
+                            <input type="text" name="store_name" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-fk-blue focus:bg-white text-sm font-bold" placeholder="Store Name" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase text-gray-700 mb-1">New Username</label>
+                            <input type="text" name="reg_username" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-fk-blue focus:bg-white text-sm font-bold" placeholder="Unique ID" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase text-gray-700 mb-1">New Password</label>
+                            <input type="password" name="reg_password" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-fk-blue focus:bg-white text-sm font-bold" placeholder="Strong Password" required>
+                        </div>
+                        <button type="submit" class="w-full bg-fk-blue hover:bg-blue-700 text-white font-black py-4 rounded-lg shadow-md transition-all uppercase text-sm mt-4">
+                            Create Account <i class="fa-solid fa-user-plus ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(mode) {
+            const loginForm = document.getElementById('loginFormSection'), registerForm = document.getElementById('registerFormSection'), loginBtn = document.getElementById('loginTabBtn'), registerBtn = document.getElementById('registerTabBtn');
+            if (mode === 'login') { 
+                loginForm.classList.remove('hidden'); registerForm.classList.add('hidden'); 
+                loginBtn.className = "w-1/2 py-2 text-sm font-black bg-white shadow rounded-md text-fk-blue transition-all"; 
+                registerBtn.className = "w-1/2 py-2 text-sm font-bold text-gray-500 hover:text-gray-800 transition-all"; 
+            } else { 
+                loginForm.classList.add('hidden'); registerForm.classList.remove('hidden'); 
+                loginBtn.className = "w-1/2 py-2 text-sm font-bold text-gray-500 hover:text-gray-800 transition-all"; 
+                registerBtn.className = "w-1/2 py-2 text-sm font-black bg-white shadow rounded-md text-fk-blue transition-all"; 
+            }
+        }
+    </script>
+</body>
+</html>
