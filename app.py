@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Load Models
 def load_model(filename):
-    return joblib.load(os.path.join(BASE_DIR, 'models', filename))
+    return joblib.load(os.path.join(BASE_DIR,filename))
 
 try:
     review_vectorizer = load_model('tfidf_vectorizer.pkl')
